@@ -1,3 +1,27 @@
+# Fitness Tracker
+
+## Description
+
+Fitness Tracker is a web application designed to help users track their workouts and monitor their progress over time. The app allows users to log exercises, set goals, and view their workout history. It offers visual insights through charts to track fitness activities and progress in a user-friendly interface.
+
+## Features
+
+Log workout sessions including details such as exercise type, duration, and date.
+View progress over time through workout summaries and visual charts.
+User-friendly interface with responsive design.
+Backend built with Node.js and Express for handling workout data.
+SQL database integration to store and manage user workout history.
+Modern design with Slate Gray and Firebrick Red as the main color scheme.
+
+## Technologies
+
+Frontend: React, HTML, CSS, JavaScript
+Backend: Node.js, Express
+Database: SQL (MySQL)
+Styling: CSS (with Flexbox), Inline Styles, Styled Components 
+Charts: (Chart.js or Recharts)
+
+
 # Create React App
 
 This directory is a brief example of a [Create React App](https://github.com/facebook/create-react-app) site that can be deployed to Vercel with zero configuration.
@@ -29,3 +53,4 @@ Launches the test runner in the interactive watch mode. See the section about [r
 Builds the app for production to the `build` folder.
 
 It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes.
+
