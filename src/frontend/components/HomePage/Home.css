@@ -17,8 +17,18 @@
     gap: 20px;
 }
 
-.header-nav-links{
+.header-nav-links li{
     cursor: pointer
+}
+
+.header-nav-links a{
+    text-decoration: none;
+    color: #B22222;
+}
+
+.active-link{
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 .home-page{
