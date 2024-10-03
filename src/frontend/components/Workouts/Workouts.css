@@ -1,0 +1,41 @@
+.log-workout {
+    background-color: #B0C4DE;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.log-workout h2{
+    color: #B22222;
+}
+
+.log-workout form{
+    display: flex;
+    flex-direction: column;
+}
+
+.log-workout label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.log-workout input, textarea{
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.log-workout button{
+    background-color: #B22222;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.log-workout button:hover{
+    background-color: #8B1A1A;
+}
