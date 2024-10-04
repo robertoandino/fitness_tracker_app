@@ -39,3 +39,28 @@
 .log-workout button:hover{
     background-color: #8B1A1A;
 }
+
+.progress{
+    background-color: #B0C4DE;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.progress h2{
+    color: #B22222;
+}
+
+.progress ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+.progress li{
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+}
