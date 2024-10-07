@@ -1,7 +1,19 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 const HomePage = () => {
+
+    const navigate = useNavigate();
+
+    const goToLogWorkout = () => {
+        navigate('/log-workout')
+    }
+
+    const goToProgress = () => {
+        navigate('/progress')
+    }
+
     return(
         <main className="home-page">
             <section className="intro">
@@ -10,8 +22,8 @@ const HomePage = () => {
                     Stay on top of your fitness journey.
                 </p>
                 <div className="home-page-buttons">
-                    <button className="home-page-button">Log Workout</button>
-                    <button className="home-page-button">View Progress</button>
+                    <button onClick={goToLogWorkout} className="home-page-button">Log Workout</button>
+                    <button onClick={goToProgress} className="home-page-button">View Progress</button>
                 </div>
             </section>
             
