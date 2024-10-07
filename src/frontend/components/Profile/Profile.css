@@ -1,0 +1,41 @@
+.profile{
+    background-color: #B0C4DE;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+h2{
+    color: #B22222;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, textarea{
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button{
+    background-color: #B22222;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #8B1A1A;
+}
