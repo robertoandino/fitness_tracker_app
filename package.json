@@ -4,6 +4,11 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
+    "body-parser": "^1.20.3",
+    "concurrently": "^9.0.1",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -12,10 +17,12 @@
     "web-vitals": "^3.0.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "start:frontend": "cross-env PORT=3000 react-scripts start --prefix src/frontend",
+    "start:backend": "nodemon src/backend/server.js",
+    "build": "react-scripts build --prefix src/frontend",
+    "test": "react-scripts test --prefix src/frontend",
+    "eject": "react-scripts eject --prefix src/frontend"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
   }
 }
