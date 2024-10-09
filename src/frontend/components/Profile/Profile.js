@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Profile.css';
+import axios from 'axios';
 
 const Profile = () => {
 
     const [profileData, setProfileData] = useState({
-        name: 'John Smith',
-        email: 'john@example.com',
-        goal: 'Lose 10 pounds in 3 months',
+        name: '',
+        email: '',
+        goal: '',
     })
+
+    useEffect(() => {
+        
+        const fetchProfileData = async () => {
+            const res = await axios.get('http://localhost:5000/api/users/1/profile');
+            setProfileData(res.data);
+        };
+
+        fetchProfileData();
+
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -17,10 +29,10 @@ const Profile = () => {
         }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        //add api call to save the updated profile data
+        await axios.put('http://localhost:5000/api/users/1/profile', profileData);
         console.log('Profile Data Update:', profileData);
     }
 
