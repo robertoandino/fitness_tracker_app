@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from "react";
-
+import axios from 'axios';
 
 const Progress = () => {
 
     const [workouts, setWorkouts] = useState([]);
 
     useEffect(() => {
-        
+    
         const fetchWorkouts = async () => {
-
-            //Code api call later
-            const mockData = [
-                {id: 1, type: 'Running', duration: 30, date: '2024-10-04', notes: 'Felt great!'},
-                {id: 2, type: 'Cycling', duration: 45, date: '2024-10-02', notes: 'Challenging ride'}
-            ];
-            setWorkouts(mockData);
+            try{
+                const res = await axios.get('http://localhost:5000/api/workouts');
+                setWorkouts(res.data);
+            } catch (err){
+                console.error('Error fetching workouts: ', err);
+            }
         };
-
+        
         fetchWorkouts();
 
     }, []);
@@ -33,7 +32,7 @@ const Progress = () => {
                             <strong>Type:</strong> {workout.type}, 
                             <strong> Duration:</strong> {workout.duration} minutes,
                             <strong> Date:</strong> {workout.date}, 
-                            <strong> Notes:</strong> {workout.notes}
+                            <strong> Calories:</strong> {workout.calories}
                         </li>
                     ))}
                 </ul>

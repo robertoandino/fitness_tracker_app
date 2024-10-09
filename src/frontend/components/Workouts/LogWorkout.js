@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './Workouts.css'
+import axios from 'axios'
 
 const LogWorkout = () => {
 
@@ -7,7 +8,7 @@ const LogWorkout = () => {
         type: '',
         duration: '',
         date: '',
-        notes: '', 
+        calories: '', 
     });
     
     const handleChange = (e) => {
@@ -18,17 +19,21 @@ const LogWorkout = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        console.log('Workout Data: ', workoutData);
 
-        setWorkoutData({
-            type: '',
-            duration: '',
-            date: '',
-            notes: '',
-        });
+        try{
+            const res = await axios.post('http://localhost:5000/api/workouts', workoutData)
+            console.log('Workout logged: ', res.data);
+            setWorkoutData({
+                type: '',
+                duration: '',
+                date: '',
+                calories: '',
+            });
+        } catch (err) {
+            console.error('Error loggin workout', err);
+        }
     };
     
     return(
@@ -69,12 +74,13 @@ const LogWorkout = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="notes">Notes:</label>
-                    <textarea
-                        id="notes"
-                        name="notes"
-                        value={workoutData.notes}
+                    <label htmlFor="calories">Calories:</label>
+                    <input
+                        type="number"
+                        name="calories"
+                        value={workoutData.calories}
                         onChange={handleChange}
+                        required
                     />
                 </div>
                 <button type="submit">Log Workout</button>
