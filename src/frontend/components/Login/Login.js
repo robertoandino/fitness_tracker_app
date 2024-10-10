@@ -1,21 +1,25 @@
 import React from 'react';
 import { useState } from 'react';
-import axios from 'axions';
+import { useNavigate, NavLink } from 'react-router-dom';
+import axios from 'axios';
 
-const Login = () => {
+const Login = ({ loginSuccess }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [token, setToken] = useState('');
+    const navigate = useNavigate();
 
     const handleLogin = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
             setToken(response.data.token);
-            localStorage.setItem('token', response.data.token);
-            alert('Login successful!');
+            localStorage.setItem('authToken', response.data.token);
+            //alert('Login successful!');
+            navigate('/profile');
+            loginSuccess(response.data.token);
         } catch (err) {
             console.error(err);
-            alert('Login failed');
+            //alert('Login failed');
         }
     };
 
@@ -33,6 +37,8 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <button onClick={handleLogin}>Login</button>
+
+            <p>Dont have an account? <NavLink to="/register">Register here</NavLink></p>
         </div>
     );
 };

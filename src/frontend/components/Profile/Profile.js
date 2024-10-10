@@ -13,8 +13,21 @@ const Profile = () => {
     useEffect(() => {
         
         const fetchProfileData = async () => {
-            const res = await axios.get('http://localhost:5000/api/users/1/profile');
-            setProfileData(res.data);
+
+            const token = localStorage.getItem('authToken');
+            
+            if(token){
+                try{
+                    const res = await axios.get('http://localhost:5000/api/users/1/profile', {
+                        headers: {
+                            Authorization: 'Bearer ${token}',
+                        },
+                    });
+                    setProfileData(res.data);       
+                } catch (err) {
+                    console.error('Error fetching profile: ', err);
+                }
+            }
         };
 
         fetchProfileData();
@@ -34,6 +47,10 @@ const Profile = () => {
 
         await axios.put('http://localhost:5000/api/users/1/profile', profileData);
         console.log('Profile Data Update:', profileData);
+    }
+
+    if (!profileData) {
+        return <p>Loading profile...</p>
     }
 
     return( 

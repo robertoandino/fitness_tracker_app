@@ -4,10 +4,10 @@ const knex = require('../db');
 
 exports.registerUser = async (req, res) => {
     
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await knex('users').insert({ email, password: hashedPassword });
+    await knex('users').insert({ name, email, password: hashedPassword });
 
     res.status(201).send('User registered');
 

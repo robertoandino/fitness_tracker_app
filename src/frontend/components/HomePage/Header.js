@@ -1,8 +1,22 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useState, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './Home.css';
 
-const Header = () => {
+const Header = ({ isAuthenticated, setIsAuthenticated }) => {
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem('authToken');
+        setIsAuthenticated(false);
+        navigate('/')
+    }
+
+    const handleLogin = () => {
+        navigate('/login');
+    }
+
+
     return (
         <header className="header">
             <h1>Fitness Tracker</h1>
@@ -29,13 +43,24 @@ const Header = () => {
                             Progress
                         </NavLink>
                     </li>
-                    <li>
-                        <NavLink to="/profile" 
-                        className={({ isActive }) => (isActive ? 'active-link' : '')}
-                        >
-                            Profile
-                        </NavLink>
-                    </li>
+                    {isAuthenticated ? (
+                        <>
+                            <li>
+                                <NavLink to="/profile" 
+                                className={({ isActive }) => (isActive ? 'active-link' : '')}
+                                >
+                                Profile
+                                </NavLink>
+                            </li>
+                            <li>
+                                <button onClick={handleLogout}>Logout</button>
+                            </li>
+                        </>
+                    ) : (
+                        <li>
+                            <button onClick={handleLogin}>Login</button>
+                        </li>
+                    )}
                 </ul>
             </nav>
         </header>

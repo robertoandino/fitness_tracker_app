@@ -1,4 +1,5 @@
 // Update with your config settings.
+const path = require('path');
 
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
@@ -8,14 +9,14 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './src/backend/db/fitness_tracker.db'
+      filename: path.join(__dirname, 'db', 'fitness_tracker.db')//'./src/backend/db/fitness_tracker.db'
     },
     useNullAsDefault: true,
     migrations: {
-      directory: './src/backend/migrations'
+      directory: path.join(__dirname, 'migrations') //'./src/backend/migrations'
     },
     seeds: {
-      directory: './src/backend/seeds'
+      directory: path.join(__dirname, 'seeds') //'./src/backend/seeds'
     }
   },
   staging: {
