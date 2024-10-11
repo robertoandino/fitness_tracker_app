@@ -2,7 +2,7 @@
 
 ## Description
 
-Fitness Tracker is a web application designed to help users track their workouts and monitor their progress over time. The app allows users to log exercises, set goals, and view their workout history. It offers visual insights through charts to track fitness activities and progress in a user-friendly interface.
+Fitness Tracker is a web application designed to help users track their workouts and monitor their progress over time. The app allows users to log exercises, set goals, and view their workout history. 
 
 ## Features
 
