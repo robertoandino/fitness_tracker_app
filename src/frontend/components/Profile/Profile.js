@@ -15,12 +15,13 @@ const Profile = () => {
         const fetchProfileData = async () => {
 
             const token = localStorage.getItem('authToken');
+            const userId = localStorage.getItem('userId');
             
             if(token){
                 try{
-                    const res = await axios.get('http://localhost:5000/api/users/1/profile', {
+                    const res = await axios.get(`http://localhost:5000/api/users/${userId}/profile`, {
                         headers: {
-                            Authorization: 'Bearer ${token}',
+                            Authorization: `Bearer ${token}`,
                         },
                     });
                     setProfileData(res.data);       
@@ -44,8 +45,9 @@ const Profile = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const userId = localStorage.getItem('userId');
 
-        await axios.put('http://localhost:5000/api/users/1/profile', profileData);
+        await axios.put(`http://localhost:5000/api/users/${userId}/profile`, profileData);
         console.log('Profile Data Update:', profileData);
     }
 

@@ -22,8 +22,14 @@ const LogWorkout = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        const token = localStorage.getItem('authToken');
+
         try{
-            const res = await axios.post('http://localhost:5000/api/workouts', workoutData)
+            const res = await axios.post('http://localhost:5000/api/workouts', workoutData, {
+                headers: {
+                    Authorization: `${token}`,
+                },
+            })
             console.log('Workout logged: ', res.data);
             setWorkoutData({
                 type: '',

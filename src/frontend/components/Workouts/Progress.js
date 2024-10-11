@@ -4,12 +4,13 @@ import axios from 'axios';
 const Progress = () => {
 
     const [workouts, setWorkouts] = useState([]);
+    const userId = localStorage.getItem('userId');
 
     useEffect(() => {
     
         const fetchWorkouts = async () => {
             try{
-                const res = await axios.get('http://localhost:5000/api/workouts');
+                const res = await axios.get(`http://localhost:5000/api/workouts/${userId}`);
                 setWorkouts(res.data);
             } catch (err){
                 console.error('Error fetching workouts: ', err);
