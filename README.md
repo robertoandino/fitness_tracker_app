@@ -21,6 +21,12 @@ Database: SQL (MySQL)
 Styling: CSS (with Flexbox), Inline Styles, Styled Components 
 Charts: (Chart.js or Recharts)
 
+## For Backend
+
+Run the backend server on your side once repo has been cloned.
+Uncomment code in HomePage, Progress, LogWorkout Components.
+Data will be stored and retrieved from the database (sqlite3).
+
 
 # Create React App
 

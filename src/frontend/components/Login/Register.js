@@ -25,6 +25,7 @@ const Register = () => {
             setMessage('User registered successfully!');
         } catch (err){
             setMessage('Error registering user.');
+            alert('Register will only work with backend running. READ README')
         }
     };
 

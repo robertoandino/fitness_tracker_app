@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './Workouts.css'
-import axios from 'axios'
+//import axios from 'axios'
 
 const LogWorkout = () => {
 
@@ -22,7 +22,9 @@ const LogWorkout = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const token = localStorage.getItem('authToken');
+        //Uncomment this once backend is running
+        //To store data in database 
+        /*const token = localStorage.getItem('authToken');
 
         try{
             const res = await axios.post('http://localhost:5000/api/workouts', workoutData, {
@@ -40,6 +42,30 @@ const LogWorkout = () => {
         } catch (err) {
             console.error('Error loggin workout', err);
         }
+        */
+
+        //Comment the code below once backend is running
+        const storedWorkouts = JSON.parse(localStorage.getItem('workouts')) || [];
+
+        const newWorkout = {
+            type: workoutData.type,
+            duration: workoutData.duration,
+            date: workoutData.date,
+            calories: workoutData.calories,
+        }
+
+        const updatedWorkouts = [...storedWorkouts, newWorkout];
+
+        localStorage.setItem('workouts', JSON.stringify(updatedWorkouts));
+
+        console.log('workout logged: ', newWorkout);
+        setWorkoutData({
+            type: '',
+            duration: '',
+            date: '',
+            calories: '',
+        });
+
     };
     
     return(

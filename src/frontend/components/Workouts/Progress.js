@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
+//import axios from 'axios';
 
 const Progress = () => {
 
     const [workouts, setWorkouts] = useState([]);
-    const userId = localStorage.getItem('userId');
 
     useEffect(() => {
-    
+        
+        //Uncomment this once backend is running
+        //To retrieve data from database 
+        /* 
+        const userId = localStorage.getItem('userId');
         const fetchWorkouts = async () => {
             try{
                 const res = await axios.get(`http://localhost:5000/api/workouts/${userId}`);
@@ -18,6 +21,11 @@ const Progress = () => {
         };
         
         fetchWorkouts();
+        */
+
+        //Comment this code once backend is running
+        const storedWorkouts = JSON.parse(localStorage.getItem('workouts')) || [];
+        setWorkouts(storedWorkouts);
 
     }, []);
 

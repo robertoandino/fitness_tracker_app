@@ -21,6 +21,7 @@ const Login = ({ loginSuccess }) => {
         } catch (err) {
             console.error(err);
             //alert('Login failed');
+            alert('Login will only work with backend running. READ README')
         }
     };
 

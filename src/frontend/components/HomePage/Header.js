@@ -8,8 +8,9 @@ const Header = ({ isAuthenticated, setIsAuthenticated }) => {
 
     const handleLogout = () => {
         localStorage.removeItem('authToken');
+        localStorage.removeItem('userId');
         setIsAuthenticated(false);
-        navigate('/')
+        navigate('/login')
     }
 
     const handleLogin = () => {

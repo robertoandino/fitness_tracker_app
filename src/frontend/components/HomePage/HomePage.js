@@ -1,8 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+//import axios from 'axios';
 import './Home.css';
 
 const HomePage = () => {
+
+    const [workouts, setWorkouts] = useState([]);
+
+    useEffect(() => {
+    
+        //Uncomment this once backend is running
+        //To retrieve data from database 
+        /* 
+        const userId = localStorage.getItem('userId');
+        const fetchWorkouts = async () => {
+            try{
+                const res = await axios.get(`http://localhost:5000/api/workouts/${userId}`);
+                setWorkouts(res.data);
+            } catch (err){
+                console.error('Error fetching workouts: ', err);
+            }
+        };
+        
+        fetchWorkouts();
+        */
+
+        //Comment this code once backend is running
+        const storedWorkouts = JSON.parse(localStorage.getItem('workouts')) || [];
+        setWorkouts(storedWorkouts.slice(-3));
+
+    }, []);
 
     const navigate = useNavigate();
 
@@ -28,8 +55,21 @@ const HomePage = () => {
             </section>
             
             <section className="recent-workouts">
-                <h3>Your Recent Workouts</h3>
-                <p>No workouts logged yet. Start tracking your progress today!</p>
+                <h2>Your Workout Progress</h2>
+                {workouts.length === 0 ? (
+                    <p>No workouts logged yet.</p>
+                ) : (
+                    <ul>
+                        {workouts.map((workout) => (
+                            <li key={workout.id}>
+                                <strong>Type:</strong> {workout.type}, 
+                                <strong> Duration:</strong> {workout.duration} minutes,
+                                <strong> Date:</strong> {workout.date}, 
+                                <strong> Calories:</strong> {workout.calories}
+                            </li>
+                        ))}
+                    </ul>
+                )}
             </section>
         </main>
     );
