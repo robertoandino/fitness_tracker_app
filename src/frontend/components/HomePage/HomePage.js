@@ -41,6 +41,12 @@ const HomePage = () => {
         navigate('/progress')
     }
 
+    //Does not clear database workouts
+    const clearLocalStorage = () => {
+        localStorage.clear();
+        setWorkouts([]);
+    };
+
     return(
         <main className="home-page">
             <section className="intro">
@@ -51,6 +57,7 @@ const HomePage = () => {
                 <div className="home-page-buttons">
                     <button onClick={goToLogWorkout} className="home-page-button">Log Workout</button>
                     <button onClick={goToProgress} className="home-page-button">View Progress</button>
+                    <button onClick={clearLocalStorage} className="home-page-button">Delete All Workouts</button>
                 </div>
             </section>
             
